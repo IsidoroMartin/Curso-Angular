@@ -1,0 +1,15 @@
+<h1 *ngIf="!filter">Héroes de <small>Marvel y DC</small></h1>
+<h1 *ngIf="filter">Buscando : {{filter}}</h1>
+
+<div class="row" *ngIf="filter && heroes.length == 0">
+    <div class="col">
+        <div class="alert alert-info" role="alert">
+            No se ha encontrando ningún héroe
+        </div>
+    </div>
+</div>
+<hr>
+<div class="card-columns animated fadeIn fast">
+    <!-- *ngFor="let heroe of heroes;let i = index" -->
+    <app-heroe-tarjeta (heroeSeleccionado)="verHeroe($event)" [heroe]="heroe" [index]="heroe.id" *ngFor="let heroe of heroes;let i = index"></app-heroe-tarjeta>
+</div>

@@ -1,0 +1,11 @@
+{
+    "deploy": {
+        "targets": [
+            {
+                "type": "local",
+                "name": "Linux Repo",
+                "dir": "Y:\\repository\\apache\\Angular6-starter"
+            }
+        ]  
+    }
+}
