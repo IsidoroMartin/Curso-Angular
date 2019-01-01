@@ -2,7 +2,7 @@
 	"folders": [
 		{
 			"name": "Angular 6 starter",
-			"path": "../VSCodeSources"
+			"path": "."
 		}
 	],
     "settings":{
