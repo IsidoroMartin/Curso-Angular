@@ -1,9 +1,6 @@
-<app-loading *ngIf="loading"></app-loading>
-<app-cards [items]="releases"></app-cards>
-
-<!--<div class="card-columns">
-    <div *ngFor="let item of releases" class="card">
-        <img class="card-img-top" [src]="item.images[0].url" alt="Card image cap">
+<div class="card-columns m-5  animated fade-in">
+    <div *ngFor="let item of items" class="card">
+        <img class="card-img-top" [src]="item.images | noimage" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{item.name}}</h5>
             <p class="card-text">
@@ -12,4 +9,4 @@
             </p>
         </div>
     </div>
-</div>-->
+</div>
