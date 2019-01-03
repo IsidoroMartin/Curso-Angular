@@ -1,4 +1,8 @@
 <app-loading *ngIf="loading"></app-loading>
+<div *ngIf="error" class="alert alert-danger">
+    <h3>Error</h3>
+    <p>{{mensajeError}}</p>
+</div>
 <app-cards [items]="releases"></app-cards>
 
 <!--<div class="card-columns">
