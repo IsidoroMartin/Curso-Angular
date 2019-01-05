@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -8,11 +8,11 @@ import {
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/internal/operators';
 import { AuthService } from '../services/auth-service.service';
+import { SpotifyService } from '../services/spotify.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private spotify: SpotifyService) {}
 
   /**
    * intercept all XHR request
@@ -35,7 +35,10 @@ export class TokenInterceptor implements HttpInterceptor {
     // handle your auth error or rethrow
     if (err.status === 401) {
         console.log(`Token ${this.authService.token} expirado, se procede a renovarlo`);
-        this.authService.authenticate();
+        this.spotify.authenticate()
+          .subscribe((access_token: string) => {
+             this.authService.setToken(access_token);
+          });
     }
     throw err;
   }

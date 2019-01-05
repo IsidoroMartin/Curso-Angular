@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
+import { AuthService } from '../../services/auth-service.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ export class HomeComponent {
   error: boolean;
   mensajeError: string;
   loading = true;
-  constructor(private spotify: SpotifyService) {
+  constructor(private spotify: SpotifyService, private authService: AuthService) {
     this.error = false;
     this.spotify.getNewReleases()
       .subscribe((data: any) => {
@@ -18,9 +19,9 @@ export class HomeComponent {
         this.loading = false;
       },
       (error) => {
-        this.loading = false;
-        this.error = true;
-        this.mensajeError = error.error.error.message;
+          this.loading = false;
+          this.error = true;
+          this.mensajeError = error.error.error.message;
       });
   }
 }

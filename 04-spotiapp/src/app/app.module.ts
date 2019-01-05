@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -16,8 +16,11 @@ import { StorageServiceModule } from 'angular-webstorage-service';
 import { TokenInterceptor } from './interceptors/token-interceptor';
 import { AuthService } from './services/auth-service.service';
 import { DomseguroPipe } from './pipes/domseguro.pipe';
+import { SpotifyService } from './services/spotify.service';
 // importar rutas
-
+export function authProviderFactory(provider: AuthService) {
+  return () => provider.load();
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,8 +43,9 @@ import { DomseguroPipe } from './pipes/domseguro.pipe';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
-      multi: true,
-    }
+      multi: true
+    },
+    { provide: APP_INITIALIZER, useFactory: authProviderFactory, deps: [AuthService, SpotifyService], multi: true }
   ],
   bootstrap: [AppComponent]
 })
