@@ -17,7 +17,7 @@ import { TokenInterceptor } from './interceptors/token-interceptor';
 import { AuthService } from './services/auth-service.service';
 import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { SpotifyService } from './services/spotify.service';
-// importar rutas
+
 export function authProviderFactory(provider: AuthService) {
   return () => provider.load();
 }
