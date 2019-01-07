@@ -42,7 +42,7 @@ export class SpotifyService {
       );
   }
   authenticate() {
-    const url = 'https://apache-server.dynu.net/repository/github/PHP/SocialMedia/rest/cors-bridge';
+    const url = 'https://apache-server.dynu.net/repository/github/PHP/cors-bridge/simulate-request';
     const req = {
       target : 'https://accounts.spotify.com/api/token',
       body: 'grant_type=client_credentials',
