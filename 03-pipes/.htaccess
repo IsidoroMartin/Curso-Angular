@@ -1,9 +1,5 @@
 <IfModule mod_rewrite.c>
-    RewriteEngine on
-	# RewriteCond %{REQUEST_URI} !^/repository/github/Curso-Angular/04-spotiapp/dist/(assets/.*)$
-	RewriteCond %{REQUEST_URI} !^/.*/dist/(assets/.*)$ [NC]
-    RewriteRule /(.*)/ dist
-	
-	RewriteCond %{REQUEST_URI} !^/.*/dist/(assets/.*)$ [NC]
-	RewriteRule // dist
+    RewriteEngine On
+	RewriteCond %{REQUEST_URI} !/.*/dist/.* [NC]
+	RewriteRule ^(.*)$ dist
 </IfModule>
